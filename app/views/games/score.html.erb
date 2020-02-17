@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Result</h1>
+  <% if @word.upcase.chars.all? {|l| @grid.chars.include?(l)} == false %>
+    <p>Sorry <strong><%=@word.upcase%></strong> can't be build out of <%=@grid%></p>
+  <%end%>
+
+  <% if @word.upcase.chars.all? {|l| @grid.chars.include?(l)} && @dictionnary['found'] == false %>
+    <p>Sorry but <strong><%=@word.upcase%></strong> does not seem to be a valid English word...</p>
+  <%end%>
+
+  <% if @word.upcase.chars.all? {|l| @grid.chars.include?(l)} && @dictionnary['found'] == true%>
+    <p><strong>Contratulations! </strong><%=@word.upcase%> is a valid english word!</p>
+  <%end%>
+
+  <%= link_to 'Play again', new_path %>
+</div>
